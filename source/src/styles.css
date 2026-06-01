@@ -14,6 +14,9 @@
   --line: rgba(17, 17, 15, 0.12);
   --line-strong: rgba(17, 17, 15, 0.2);
   --panel: rgba(255, 255, 255, 0.66);
+  --radius-sm: 14px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
   --glass: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.94) 0%,
@@ -95,7 +98,7 @@ a {
   width: 38px;
   height: 38px;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: var(--glass);
   color: var(--ink);
   font-size: 12px;
@@ -127,14 +130,14 @@ a {
   gap: 2px;
   padding: 4px;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--glass);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(20px) saturate(1.2);
 }
 
 .nav-links a {
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   padding: 8px 13px;
   color: #454540;
   font-size: 14px;
@@ -153,7 +156,7 @@ a {
   width: 40px;
   height: 40px;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--glass);
   color: var(--ink);
   box-shadow: var(--glass-shadow);
@@ -270,7 +273,7 @@ a {
   overflow: hidden;
   gap: 9px;
   min-height: 46px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 12px 17px;
   font-weight: 720;
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
@@ -317,7 +320,7 @@ a {
   align-self: center;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background: var(--glass);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(34px) saturate(1.24);
@@ -409,6 +412,15 @@ a {
   margin: 18px 18px 0;
   color: #292925;
   line-height: 1.45;
+}
+
+a.profile-line {
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+a.profile-line:hover {
+  color: #000000;
+  transform: translateX(2px);
 }
 
 .profile-line svg {
@@ -513,7 +525,7 @@ a {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background: var(--glass);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(24px) saturate(1.18);
@@ -549,7 +561,7 @@ a {
   width: 40px;
   height: 40px;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.66);
   color: var(--ink);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
@@ -685,7 +697,7 @@ a {
   margin: 0 auto 74px;
   padding: 40px;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background: var(--glass);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(30px) saturate(1.2);
@@ -703,6 +715,54 @@ a {
   line-height: 1.86;
 }
 
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 980px;
+  margin-top: 24px;
+}
+
+.contact-method {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 7px 10px;
+  align-items: center;
+  min-height: 86px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.62);
+  color: var(--ink);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px) saturate(1.14);
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.contact-method:hover {
+  transform: translateY(-2px);
+  border-color: rgba(17, 17, 15, 0.24);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.contact-method svg {
+  color: var(--ink);
+}
+
+.contact-method span {
+  margin: 0;
+  color: #6a6a64;
+  font-size: 13px;
+}
+
+.contact-method strong {
+  grid-column: 1 / -1;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 720;
+}
+
 .contact-actions {
   justify-content: flex-end;
   margin-top: 0;
@@ -717,6 +777,7 @@ a {
   .project-grid,
   .skills-grid,
   .system-grid,
+  .contact-methods,
   .contact-section {
     grid-template-columns: 1fr;
   }
@@ -783,7 +844,7 @@ a {
 
   .status-pill {
     align-items: flex-start;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     line-height: 1.45;
   }
 

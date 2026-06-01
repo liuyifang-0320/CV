@@ -13,7 +13,9 @@ import {
   Github,
   GraduationCap,
   Layers,
+  Mail,
   MapPin,
+  Phone,
   Rocket,
   ShieldCheck,
   Sparkles,
@@ -93,6 +95,33 @@ const stats = [
   ["AI", "主攻方向"],
   ["MVP", "执行方法"],
   ["上海", "目标城市"],
+];
+
+const contactMethods = [
+  {
+    icon: Phone,
+    label: "电话",
+    value: "18320046487",
+    href: "tel:18320046487",
+  },
+  {
+    icon: Mail,
+    label: "QQ 邮箱",
+    value: "484130682@qq.com",
+    href: "mailto:484130682@qq.com",
+  },
+  {
+    icon: Mail,
+    label: "Gmail",
+    value: "liuyifang0320@gmail.com",
+    href: "mailto:liuyifang0320@gmail.com",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "github.com/liuyifang-0320",
+    href: "https://github.com/liuyifang-0320",
+  },
 ];
 
 const fadeUp = {
@@ -299,6 +328,18 @@ function App() {
                 <MapPin size={18} />
                 期望城市：上海
               </div>
+              <a className="profile-line" href="tel:18320046487">
+                <Phone size={18} />
+                18320046487
+              </a>
+              <a className="profile-line" href="mailto:484130682@qq.com">
+                <Mail size={18} />
+                QQ 邮箱：484130682@qq.com
+              </a>
+              <a className="profile-line" href="mailto:liuyifang0320@gmail.com">
+                <Mail size={18} />
+                Gmail：liuyifang0320@gmail.com
+              </a>
               <div className="metric-grid">
                 {stats.map(([value, label]) => (
                   <div className="metric" key={label}>
@@ -433,8 +474,20 @@ function App() {
             <span>Contact</span>
             <h2>欢迎交流实习、项目合作与 AI 产品想法。</h2>
             <p>
-              我正在寻找能真实参与项目、积累工程经验和 AI 应用经验的机会。如果你对我的项目或能力感兴趣，可以通过 GitHub 联系我。
+              我正在寻找能真实参与项目、积累工程经验和 AI 应用经验的机会。如果你对我的项目或能力感兴趣，可以通过电话、邮箱或 GitHub 联系我。
             </p>
+            <div className="contact-methods">
+              {contactMethods.map((method) => {
+                const Icon = method.icon;
+                return (
+                  <a className="contact-method" href={method.href} key={method.label} target={method.label === "GitHub" ? "_blank" : undefined} rel={method.label === "GitHub" ? "noreferrer" : undefined}>
+                    <Icon size={20} />
+                    <span>{method.label}</span>
+                    <strong>{method.value}</strong>
+                  </a>
+                );
+              })}
+            </div>
           </div>
           <div className="contact-actions">
             <a className="primary-action" href="https://github.com/liuyifang-0320" target="_blank" rel="noreferrer">
